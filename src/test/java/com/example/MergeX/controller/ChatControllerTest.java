@@ -1,5 +1,6 @@
 package com.example.MergeX.controller;
 
+import com.example.MergeX.Dto.CreateMessageDto;
 import com.example.MergeX.service.ChatService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
@@ -56,11 +57,12 @@ public class ChatControllerTest {
     @DisplayName("TC-11: Send Group Message - Message sent")
     public void testSendMessage() throws Exception {
         Long groupId = 1L;
-        String content = "Hello team!";
+        CreateMessageDto messageDto = new CreateMessageDto();
+        messageDto.setContent("Hello team!");
 
         mockMvc.perform(post("/chat/groups/" + groupId + "/messages")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(content))
+                .content(objectMapper.writeValueAsString(messageDto)))
                 .andExpect(status().isOk());
 
         System.out.println("TC-11: Send Group Message -> Passed (Message sent)");
