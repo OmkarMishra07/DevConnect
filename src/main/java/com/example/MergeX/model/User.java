@@ -23,6 +23,7 @@ public class User {
     @Column(nullable = false,unique = true)
     private String email;
     private String githubUrl;
+    private String domain;
     @Enumerated(EnumType.STRING)
     private Education education;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,6 +47,8 @@ public class User {
     private Role role = Role.USER;
     @Column(nullable = false)
     private boolean profileCompleted = false;
+    @Column(nullable = false)
+    private Integer contributionScore = 50;
 
 
     public boolean getProfileCompleted() {

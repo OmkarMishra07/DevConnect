@@ -17,9 +17,13 @@ public class ProjectDtoRes {
         private Long id;
         private String title;
         private String description;
+        private String tagline;
         private Set<String> techStack;
         private String createdByName;
         private LocalDateTime createdAt;
         private Set<ParticipantDto> joinedUsers;
+        private int participantCount;
+        private long matchScore;
+        private Integer maxTeamSize;
 
 }

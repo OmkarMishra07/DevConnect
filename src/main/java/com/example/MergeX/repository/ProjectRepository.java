@@ -38,10 +38,13 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
        SELECT p FROM Project p
        WHERE p.createdBy.id <> :userId
        AND :user NOT MEMBER OF p.participants
+       AND (p.maxTeamSize IS NULL OR (SELECT COUNT(m) FROM p.participants m) < p.maxTeamSize)
+       AND (:keyword IS NULL OR LOWER(p.title) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(p.tagline) LIKE LOWER(CONCAT('%', :keyword, '%')))
        """)
     Page<Project> findExploreProjects(
             @Param("userId") Long userId,
             @Param("user") User user,
+            @Param("keyword") String keyword,
             Pageable pageable
     );
 }

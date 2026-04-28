@@ -15,8 +15,10 @@ public class UserProfileResponseDto {
     private String email;
     private Education education;
     private String collegeName;
+    private String domain;
     private Set<String> skills;
     private String githubUrl;
     private String bio;
+    private Integer contributionScore;
     private boolean profileCompleted;
 }

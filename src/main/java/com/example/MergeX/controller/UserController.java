@@ -37,6 +37,12 @@ public class UserController {
     public ResponseEntity<UserDtoRes> getuser(@PathVariable Long id){
         return ResponseEntity.ok(userService.getUserById(id));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<UserDtoRes>> searchUsers(@RequestParam String skill) {
+        return ResponseEntity.ok(userService.searchUsersBySkill(skill));
+    }
+
     @GetMapping("/me")
     public ResponseEntity<UserProfileResponseDto> getMyProfile() {
         return ResponseEntity.ok(userService.getMyProfile());

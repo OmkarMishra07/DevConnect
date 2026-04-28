@@ -40,5 +40,9 @@ public class Project {
     private Set<User> participants = new HashSet<>();
     @Enumerated(EnumType.STRING)
     private ProjectStatus status = ProjectStatus.OPEN;
+    @Column(length = 180)
+    private String tagline;
     private LocalDateTime createdAt = LocalDateTime.now();
+    
+    private Integer maxTeamSize = 10; // Default size
 }
